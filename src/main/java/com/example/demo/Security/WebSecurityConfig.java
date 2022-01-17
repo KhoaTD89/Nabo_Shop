@@ -41,19 +41,40 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeRequests()
+//                .antMatchers("/users").authenticated()
+//                .anyRequest().permitAll()
+//                .and()
+//                .formLogin()
+//                .loginProcessingUrl("/signin")
+//                .loginPage("/login").permitAll()
+//                .usernameParameter("txtusername")
+//                .passwordParameter("txtpassword")
+//                .permitAll()
+//                .and()
+//                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
+
         http
                 .authorizeRequests()
-                .antMatchers("/users").authenticated()
-                .anyRequest().permitAll()
+                .antMatchers("/index.html").permitAll()
+                .antMatchers("/profile/**").authenticated()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/management/**").hasAnyRole("ADMIN", "MANAGER")
+                .antMatchers("/api/public/test1").hasAuthority("ACCESS_TEST1")
+                .antMatchers("/api/public/test2").hasAuthority("ACCESS_TEST2")
+                .antMatchers("/api/public/users").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/signin")
                 .loginPage("/login").permitAll()
                 .usernameParameter("txtusername")
                 .passwordParameter("txtpassword")
-                .permitAll()
                 .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
-
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
+                .and()
+                .rememberMe()
+                .tokenValiditySeconds(99999999)
+                .rememberMeParameter("check-remember-me");
     }
 }
