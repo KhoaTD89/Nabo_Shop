@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:insert="fragments.html :: headerfiles"></head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+
+<div class="container">
+    <div class="jumbotron">
+        <h3 class="display-4" sec:authorize="isAuthenticated()">hello <span sec:authentication="name"></span></h3>
+        <h3 class="lead">Welcome to Nabo shop</h3>
+        <h4><a class="btn btn-primary btn-lg" th:href="@{/users}">List of Products</a></h4>
+    </div>
+</div>
+</body>
+</html>

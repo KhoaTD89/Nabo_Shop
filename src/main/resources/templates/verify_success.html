@@ -1,0 +1,14 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles"></head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+<div class="container">
+    <div class="jumbotron">
+        <h4>Congratulations, your account has been verified.</h4>
+        <h4><a th:href="@{/login}">Click here to Login</a></h4>
+    </div>
+</div>
+</body>
+</html>

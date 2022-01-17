@@ -1,0 +1,13 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles"></head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+<div class="container">
+    <h3>Sorry, we could not verify account. It maybe already verified,
+        or verification code is incorrect.</h3>
+    <a th:href="@{/}">Go home</a>
+</div>
+</body>
+</html>
