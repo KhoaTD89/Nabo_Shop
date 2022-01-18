@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles"></head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+<div class="container text-center">
+    <div>
+        <h1>products</h1>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div th:each="product:${products}" style="width: 200px" class="col">
+            <div class="card shadow-sm">
+                <img class="card-img-top" th:src="${product.getImage()}" alt="image alternative" style="width:90%; height:150px">
+                <div class="card-body">
+                    <h4 class="card-title" th:text="${product.getCode()}"></h4>
+                    <p class="card-text" th:text="${product.getName()}"></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                        </div>
+                        <small class="text-muted">9 mins</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

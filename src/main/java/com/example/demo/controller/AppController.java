@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.UserEntity;
 import com.example.demo.repository.UserRepository;
-import com.example.demo.services.UserService;
+import com.example.demo.services.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.password.PasswordEncoder;

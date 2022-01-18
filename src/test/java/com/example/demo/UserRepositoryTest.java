@@ -30,12 +30,10 @@ class UserRepositoryTest {
 		user.setPassword("ravi2020");
 		user.setFirstName("Ravi");
 		user.setLastName("Kumar");
-
 		UserEntity savedUser = repo.save(user);
-
 		UserEntity existUser = entityManager.find(UserEntity.class, savedUser.getId());
-
 		Assertions.assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
-
+		Assertions.assertThat(repo.findAll().size()==1);
 	}
+
 }
